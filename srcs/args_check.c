@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   args_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 21:22:01 by amal              #+#    #+#             */
-/*   Updated: 2025/05/07 01:12:50 by amal             ###   ########.fr       */
+/*   Created: 2025/05/07 00:47:27 by amal              #+#    #+#             */
+/*   Updated: 2025/05/07 01:09:08 by amal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
-
-# include <unistd.h>
-# include <stdio.h>
-# include <pthread.h>
-# include <stdlib.h>
-# include <sys/time.h>
-
-typedef struct	s_arguments
+int	is_valid_number(int argc, char **argv)
 {
-	int		num_of_philos;
-	long	time_to_die;
-	long	time_to_eat;
-	long	time_to_sleep;
-	int		num_of_meals;
-	long	start_time;
-}	t_arguments;
+	int	i;
+	int	j;
 
-int	ft_atoi(const char *nptr);
-int	is_valid_number(int argc, char **argv);
-
-#endif
+	i = 1;
+	while (i < argc)
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] >= '0' && argv[i][j] <= '9')
+				j++;
+			else
+				return (0);
+		}
+		i++;
+	}
+	return (1);
+}

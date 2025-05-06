@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 21:22:01 by amal              #+#    #+#             */
-/*   Updated: 2025/05/07 01:12:50 by amal             ###   ########.fr       */
+/*   Created: 2025/05/07 00:37:57 by amal              #+#    #+#             */
+/*   Updated: 2025/05/07 00:39:27 by amal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
-
-# include <unistd.h>
-# include <stdio.h>
-# include <pthread.h>
-# include <stdlib.h>
-# include <sys/time.h>
-
-typedef struct	s_arguments
+int	ft_atoi(const char *nptr)
 {
-	int		num_of_philos;
-	long	time_to_die;
-	long	time_to_eat;
-	long	time_to_sleep;
-	int		num_of_meals;
-	long	start_time;
-}	t_arguments;
+	int	i;
+	int	num;
 
-int	ft_atoi(const char *nptr);
-int	is_valid_number(int argc, char **argv);
-
-#endif
+	i = 0;
+	num = 0;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		num = (num * 10) + (nptr[i] - '0');
+		i++;
+	}
+	return (num);
+}

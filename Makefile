@@ -5,7 +5,10 @@ CFLAGS = -Wall -Werror -Wextra -pthread
 SRC_PATH = srcs/
 OBJ_PATH = objs/
 
-SRC = main.c 
+SRC =	main.c \
+		ft_atoi.c \
+		args_check.c 
+
 OBJ = $(SRC:.c=.o)
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
