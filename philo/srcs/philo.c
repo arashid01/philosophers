@@ -6,7 +6,7 @@
 /*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:45:19 by amal              #+#    #+#             */
-/*   Updated: 2025/06/30 01:33:42 by amal             ###   ########.fr       */
+/*   Updated: 2025/06/30 01:43:40 by amal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int main(int argc, char **argv)
 
 	if (argc < 5 || argc > 6)
 	{
-	   ft_putendl_fd("Usage: ./philo \"n_philo\" \"time_to_die\" \"time_to_eat\" \"time_to_sleep\" [n_meals]", 2);
-	   return (1);
+		ft_putendl_fd("Usage: ./philo \"n_philo\" \"time_to_die\" \"time_to_eat\" \"time_to_sleep\" [n_meals]", 2);
+		return (1);
 	}
 	argc--;
 	argv++;
