@@ -6,19 +6,29 @@
 /*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 00:47:27 by amal              #+#    #+#             */
-/*   Updated: 2025/06/30 01:32:57 by amal             ###   ########.fr       */
+/*   Updated: 2025/07/01 13:21:16 by amal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int ft_strlen(char *str)
+int ft_numlen(char *str)
 {
 	int i;
 
 	i = 0;
 	if (*str == '+')
 		str++;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int ft_strlen(char *str)
+{
+	int i;
+
+	i = 0;
 	while (str[i])
 		i++;
 	return (i);
@@ -67,8 +77,7 @@ int ft_atoi(char *nbr)
 		num = (num * 10) + (nbr[i] - '0');
 		i++;
 	}
-	if (ft_strlen(nbr) > 10 || num > INT_MAX
-			|| num < INT_MIN || num == 0)
+	if (ft_numlen(nbr) > 10 || num > INT_MAX || num <= 0)
 		return(-2);
 	return (num);
 }
