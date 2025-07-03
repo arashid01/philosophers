@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:45:19 by amal              #+#    #+#             */
-/*   Updated: 2025/07/03 20:25:03 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/03 23:18:20 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ int parse_args(int argc, char **argv, t_args *args)
 	else
 		args->num_of_meals = -1;
 	return (1);
+}
+
+void	destroy_data(t_data *data)
+{
+	
 }
 
 int main(int argc, char **argv)
@@ -71,5 +76,15 @@ int main(int argc, char **argv)
 		free(args);
 		return (1);
 	}
+	// here
+	int i = 0;
+	while (i < data->args.num_of_philos)
+	{
+		printf("Philo[%d] | L = %d | R = %d\n", data->philos[i].id, i, (i + 1) % data->args.num_of_philos);
+		i++;
+	}
+	destroy_data(data);
+	free(args);
+	// here
 	return (0);
 }
