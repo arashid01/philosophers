@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 14:25:28 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/03 22:40:35 by amal             ###   ########.fr       */
+/*   Updated: 2025/07/03 21:06:49 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,28 @@ int	init_forks(t_data *data, int num_forks)
 		{
 			while (--i >= 0)
 				pthread_mutex_destroy(&data->forks[i]);
-			return (-1);
+			return (0);
 		}
 		i++;
 	}
-	return (0);
+	return (1);
+}
+
+int	init_philos(t_data *data, int num_philos)
+{
+	int		i;
+	t_philo	*philo;
+
+	data->philos = malloc(num_philos * sizeof(t_philo));
+	if (!data->philos)
+		return (0);
+	i = 0;
+	while (i < num_philos)
+	{
+		philo = &data->philos[i];
+		philo->id = i +
+	}
+	return (1);
 }
 
 t_data	*init_data(t_args *args)
@@ -60,8 +77,15 @@ t_data	*init_data(t_args *args)
 		free(data);
 		return (NULL);
 	}
-	if (init_forks(data, args->num_of_forks) != 0)
+	if (!init_forks(data, args->num_of_forks))
 	{
+		free(data->forks);
+		free(data);
+		return (NULL);
+	}
+	if (!init_philos(data, args->num_of_philos))
+	{
+		//destroy_forks_mmutexes
 		free(data->forks);
 		free(data);
 		return (NULL);

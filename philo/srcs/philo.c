@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:45:19 by amal              #+#    #+#             */
-/*   Updated: 2025/07/03 16:41:37 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/03 20:25:03 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int parse_args(int argc, char **argv, t_args *args)
 {
-	args->num_of_philo = ft_atoi(argv[0]);
-	if (args->num_of_philo == -2)
+	args->num_of_philos = ft_atoi(argv[0]);
+	if (args->num_of_philos == -2)
 		return (0);
-	args->num_of_forks = args->num_of_philo;
+	args->num_of_forks = args->num_of_philos;
 	args->time_to_die = ft_atoi(argv[1]);
 	if (args->time_to_die == -2)
 		return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:22:01 by amal              #+#    #+#             */
-/*   Updated: 2025/07/03 22:41:07 by amal             ###   ########.fr       */
+/*   Updated: 2025/07/03 20:25:54 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <limits.h>
 
 typedef struct s_args {
-	int	num_of_philo;
+	int	num_of_philos;
 	int	num_of_forks;
 	int	time_to_die;
 	int	time_to_eat;
@@ -36,9 +36,9 @@ typedef struct s_data {
 	int				meals_eaten;
 	t_args			args;
 	pthread_mutex_t	*forks;
+	struct s_philo	*philos;
 	pthread_mutex_t	death_mutex;
 	pthread_mutex_t	meals_mutex;
-	struct s_philo	*philos;
 } t_data;
 
 typedef struct s_philo {
