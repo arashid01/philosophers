@@ -7,6 +7,7 @@ SRCS =	srcs/philo.c \
 		srcs/philo_utils.c \
 		srcs/init_data.c \
 		srcs/simulation.c \
+		srcs/clean_utils.c \
 
 OBJS = ${SRCS:.c=.o}
 

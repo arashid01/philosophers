@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 14:25:28 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/03 16:40:21 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/03 21:41:34 by amal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ long	init_timer(void)
 t_data	*init_data(t_args *args)
 {
 	t_data	*data;
+	int		i;
 
 	data = malloc(sizeof(t_data));
 	if (!data)
@@ -36,5 +37,24 @@ t_data	*init_data(t_args *args)
 	data->start_time = init_timer();
 	data->death_flag = 0;
 	data->args = *args;
+	data->forks = malloc(args->num_of_forks * sizeof(pthread_mutex_t));
+	if (!data->forks)
+	{
+		free(data);
+		return (NULL);
+	}
+	i = 0;
+	while (i < args->num_of_forks)
+	{
+		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
+		{
+			while (--i >= 0)
+				pthread_mutex_destroy(&data->forks[i]);
+			free(data->forks);
+			free(data);
+			return (NULL);
+		}
+		i++;
+	}
 	return (data);
 }
