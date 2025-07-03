@@ -5,6 +5,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS =	srcs/philo.c \
 		srcs/philo_utils.c \
+		srcs/init_data.c \
+		srcs/simulation.c \
 
 OBJS = ${SRCS:.c=.o}
 

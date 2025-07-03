@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:45:19 by amal              #+#    #+#             */
-/*   Updated: 2025/06/30 01:43:40 by amal             ###   ########.fr       */
+/*   Updated: 2025/07/03 16:41:37 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int parse_args(int argc, char **argv, t_args *args)
 
 int main(int argc, char **argv)
 {
-	t_args *args;
+	t_args	*args;
+	t_data	*data;
 
 	if (argc < 5 || argc > 6)
 	{
@@ -63,6 +64,12 @@ int main(int argc, char **argv)
 		free(args);
 		ft_putendl_fd("Invalid arguments", 2);
 		return(1);
+	}
+	data = init_data(args);
+	if (!data)
+	{
+		free(args);
+		return (1);
 	}
 	return (0);
 }
