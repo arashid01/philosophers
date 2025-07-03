@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:22:01 by amal              #+#    #+#             */
-/*   Updated: 2025/07/03 16:39:41 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/03 22:41:07 by amal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ typedef struct s_philo {
 	t_data			*data;
 } t_philo;
 
-int		ft_isnum(char c);
 int		ft_atoi(char *nbr);
 int		ft_strlen(char *str);
 int		correct_args(int argc, char **argv);
 void	ft_putendl_fd(char *str, int fd);
 t_data	*init_data(t_args *args);
+int		init_forks(t_data *data, int num_forks);
 
 #endif

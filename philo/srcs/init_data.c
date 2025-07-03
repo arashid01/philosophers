@@ -6,7 +6,7 @@
 /*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 14:25:28 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/03 21:41:34 by amal             ###   ########.fr       */
+/*   Updated: 2025/07/03 22:40:35 by amal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,27 @@ long	init_timer(void)
 	return (time);
 }
 
+int	init_forks(t_data *data, int num_forks)
+{
+	int	i;
+
+	i = 0;
+	while (i < num_forks)
+	{
+		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
+		{
+			while (--i >= 0)
+				pthread_mutex_destroy(&data->forks[i]);
+			return (-1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 t_data	*init_data(t_args *args)
 {
 	t_data	*data;
-	int		i;
 
 	data = malloc(sizeof(t_data));
 	if (!data)
@@ -43,18 +60,11 @@ t_data	*init_data(t_args *args)
 		free(data);
 		return (NULL);
 	}
-	i = 0;
-	while (i < args->num_of_forks)
+	if (init_forks(data, args->num_of_forks) != 0)
 	{
-		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
-		{
-			while (--i >= 0)
-				pthread_mutex_destroy(&data->forks[i]);
-			free(data->forks);
-			free(data);
-			return (NULL);
-		}
-		i++;
+		free(data->forks);
+		free(data);
+		return (NULL);
 	}
 	return (data);
 }

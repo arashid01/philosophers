@@ -5,6 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS =	srcs/philo.c \
 		srcs/philo_utils.c \
+		srcs/args_check.c \
 		srcs/init_data.c \
 		srcs/simulation.c \
 		srcs/clean_utils.c \
