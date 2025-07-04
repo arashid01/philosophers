@@ -3,12 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   clean_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amal <amal@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:01:26 by amal              #+#    #+#             */
-/*   Updated: 2025/07/03 21:01:51 by amal             ###   ########.fr       */
+/*   Updated: 2025/07/04 00:14:08 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+void	destroy_forks_mutexes(t_data *data, int num_forks)
+{
+	int i;
+
+	i = 0;
+	while (i < num_forks)
+	{
+		pthread_mutex_destroy(&data->forks[i]);
+		i++;
+	}
+}
+
+void	destroy_philo_mutexes(t_data *data, int num_philos)
+{
+	int i;
+
+	i = 0;
+	while (i < num_philos)
+	{
+		pthread_mutex_destroy(&data->philos[i].last_meal_mutex);
+		pthread_mutex_destroy(&data->philos[i].meals_num_mutex);
+		i++;
+	}
+}
+
+void	destroy_data(t_data *data)
+{
+	destroy_forks_mutexes(data, data->args.num_of_forks);
+    free(data->forks);
+    destroy_philo_mutexes(data, data->args.num_of_forks);
+    free(data->philos);
+    free(data);
+}

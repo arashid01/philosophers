@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:45:19 by amal              #+#    #+#             */
-/*   Updated: 2025/07/03 23:18:20 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/04 00:14:20 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,6 @@ int parse_args(int argc, char **argv, t_args *args)
 	else
 		args->num_of_meals = -1;
 	return (1);
-}
-
-void	destroy_data(t_data *data)
-{
-	
 }
 
 int main(int argc, char **argv)
