@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:45:19 by amal              #+#    #+#             */
-/*   Updated: 2025/07/04 00:14:20 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/05 15:02:19 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,9 @@ int main(int argc, char **argv)
 		free(args);
 		return (1);
 	}
-	// here
-	int i = 0;
-	while (i < data->args.num_of_philos)
-	{
-		printf("Philo[%d] | L = %d | R = %d\n", data->philos[i].id, i, (i + 1) % data->args.num_of_philos);
-		i++;
-	}
+	create_philos_threads(data);
+	join_philos_threads(data);
 	destroy_data(data);
 	free(args);
-	// here
 	return (0);
 }

@@ -7,6 +7,8 @@ SRCS =	srcs/philo.c \
 		srcs/philo_utils.c \
 		srcs/args_check.c \
 		srcs/init_data.c \
+		srcs/threads.c \
+		srcs/time_func.c \
 		srcs/simulation.c \
 		srcs/clean_utils.c \
 
