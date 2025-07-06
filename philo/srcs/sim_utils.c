@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 03:14:18 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/06 04:14:33 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:59:23 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void    print_status(t_philo *philo, const char *str)
     pthread_mutex_lock(&philo->data->print_mutex);
     if (philo->data->stop_flag == 1)
     {
+        time = current_time(philo->data->start_time);
+        printf("%ld ms philo %d %s\n", time, philo->id, str);
         pthread_mutex_unlock(&philo->data->print_mutex);
         return ;
     }

@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:12:32 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/06 04:14:33 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 09:38:26 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	check_meal_count(t_philo *philo)
 	philo->meals_num++;
 	done = (philo->meals_num == philo->data->args.num_of_meals);
 	pthread_mutex_unlock(&philo->meals_num_mutex);
-
 	if (done)
 	{
 		pthread_mutex_lock(&philo->data->meals_mutex);

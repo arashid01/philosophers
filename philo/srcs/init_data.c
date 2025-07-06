@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 14:25:28 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/06 02:06:46 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:41:39 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	init_philos(t_data *data, int num_philos)
 		philo = &data->philos[i];
 		philo->id = i + 1;
 		philo->meals_num = 0;
-		philo->last_meal = data->start_time;
+		philo->last_meal = 0;
 		philo->data = data;
 		philo->left_fork = &data->forks[i];
 		philo->right_fork = &data->forks[(i + 1) % num_philos];

@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:45:19 by amal              #+#    #+#             */
-/*   Updated: 2025/07/06 04:11:01 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:59:52 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,16 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	create_philos_threads(data);
-	sleep(2);
-	pthread_mutex_lock(&data->death_mutex);
-	data->stop_flag = 1;
-	pthread_mutex_unlock(&data->death_mutex);
+	pthread_create(&data->monitor, NULL, monitor_routine, data);
+	// if (data->args.num_of_philos == 1)
+	// {
+	// 	pthread_mutex_lock(&data->death_mutex);
+	// 	data->stop_flag = 1;
+	// 	pthread_mutex_unlock(&data->death_mutex);
+	// }
+	printf("Death flag: %d\n", data->stop_flag);
 	join_philos_threads(data);
+	pthread_join(data->monitor, NULL);
 	destroy_data(data);
 	free(args);
 	return (0);
