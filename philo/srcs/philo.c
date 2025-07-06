@@ -6,37 +6,11 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:45:19 by amal              #+#    #+#             */
-/*   Updated: 2025/07/05 15:02:19 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 01:08:54 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-int parse_args(int argc, char **argv, t_args *args)
-{
-	args->num_of_philos = ft_atoi(argv[0]);
-	if (args->num_of_philos == -2)
-		return (0);
-	args->num_of_forks = args->num_of_philos;
-	args->time_to_die = ft_atoi(argv[1]);
-	if (args->time_to_die == -2)
-		return (0);
-	args->time_to_eat = ft_atoi(argv[2]);
-	if (args->time_to_eat == -2)
-		return (0);
-	args->time_to_sleep = ft_atoi(argv[3]);
-	if (args->time_to_sleep == -2)
-		return (0);
-	if (argc == 5)
-	{
-		args->num_of_meals = ft_atoi(argv[4]);
-		if (args->num_of_meals == -2)
-			return (0);
-	}
-	else
-		args->num_of_meals = -1;
-	return (1);
-}
 
 int main(int argc, char **argv)
 {
@@ -72,6 +46,10 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	create_philos_threads(data);
+	usleep(20000);
+	pthread_mutex_lock(&data->death_mutex);
+	data->stop_flag = 1;
+	pthread_mutex_unlock(&data->death_mutex);
 	join_philos_threads(data);
 	destroy_data(data);
 	free(args);

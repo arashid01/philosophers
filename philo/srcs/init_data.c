@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 14:25:28 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/05 14:08:27 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 02:06:46 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,12 @@ int	init_shared_mutexes(t_data *data)
 		pthread_mutex_destroy(&data->death_mutex);
 		return (0);
 	}
+	if (pthread_mutex_init(&data->print_mutex, NULL) != 0)
+	{
+		pthread_mutex_destroy(&data->death_mutex);
+		pthread_mutex_destroy(&data->meals_mutex);
+		return (0);
+	}
 	return (1);
 }
 
@@ -91,7 +97,7 @@ t_data	*init_data(t_args *args)
 	if (!data)
 		return (NULL);
 	data->start_time = init_timer();
-	data->death_flag = 0;
+	data->stop_flag = 0;
 	data->args = *args;
 	data->forks = malloc(args->num_of_forks * sizeof(pthread_mutex_t));
 	if (!data->forks)

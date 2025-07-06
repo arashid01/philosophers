@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:22:01 by amal              #+#    #+#             */
-/*   Updated: 2025/07/05 14:21:29 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 02:06:03 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ typedef struct s_args {
 
 typedef struct s_data {
 	long			start_time;
-	int				death_flag;
+	int				stop_flag;
 	int				meals_eaten;
 	t_args			args;
 	pthread_mutex_t	*forks;
 	struct s_philo	*philos;
 	pthread_mutex_t	death_mutex;
+	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	meals_mutex;
 }	t_data;
 
@@ -56,6 +57,7 @@ typedef struct s_philo {
 int		ft_atoi(char *nbr);
 int		ft_strlen(char *str);
 int		correct_args(int argc, char **argv);
+int		parse_args(int argc, char **argv, t_args *args);
 void	ft_putendl_fd(char *str, int fd);
 t_data	*init_data(t_args *args);
 long	init_timer(void);
