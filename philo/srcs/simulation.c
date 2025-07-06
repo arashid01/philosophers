@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:12:32 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/06 04:05:37 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 04:14:33 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void    pick_forks(t_philo *philo)
     if (philo->id % 2 == 0 )
     {
         pthread_mutex_lock(philo->left_fork);
-        print_state(philo, "has taken a fork");
+        print_status(philo, "has taken a fork");
         pthread_mutex_lock(philo->right_fork);
-        print_state(philo, "has taken a fork");
+        print_status(philo, "has taken a fork");
     }
     else
     {
         pthread_mutex_lock(philo->right_fork);
-        print_state(philo, "has taken a fork");
+        print_status(philo, "has taken a fork");
         pthread_mutex_lock(philo->left_fork);
-        print_state(philo, "has taken a fork");
+        print_status(philo, "has taken a fork");
     }
 }
 
@@ -83,7 +83,7 @@ void    *philo_routine(void *arg)
             break ;
         // eat
         pick_forks(philo);
-        print_state(philo, "is eating");
+        print_status(philo, "is eating");
         pthread_mutex_lock(&philo->last_meal_mutex);
         philo->last_meal = current_time(philo->data->start_time);
         pthread_mutex_unlock(&philo->last_meal_mutex);
@@ -91,10 +91,10 @@ void    *philo_routine(void *arg)
         drop_forks(philo);
         check_meal_count(philo);
         // sleep
-        print_state(philo, "is sleeping");
+        print_status(philo, "is sleeping");
         ft_sleep(philo, philo->data->args.time_to_sleep);
         // overthink
-        print_state(philo, "is thinking");
+        print_status(philo, "is thinking");
     }
     return (NULL);
 }

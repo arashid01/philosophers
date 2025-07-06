@@ -6,13 +6,13 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 03:14:18 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/06 03:15:37 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 04:14:33 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void    print_state(t_philo *philo, const char *str)
+void    print_status(t_philo *philo, const char *str)
 {
     long time;
 
