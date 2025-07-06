@@ -10,6 +10,7 @@ SRCS =	srcs/philo.c \
 		srcs/threads.c \
 		srcs/time_func.c \
 		srcs/simulation.c \
+		srcs/sim_utils.c \
 		srcs/clean_utils.c \
 
 OBJS = ${SRCS:.c=.o}

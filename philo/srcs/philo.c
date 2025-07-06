@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:45:19 by amal              #+#    #+#             */
-/*   Updated: 2025/07/06 01:08:54 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 04:11:01 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	create_philos_threads(data);
-	usleep(20000);
+	sleep(2);
 	pthread_mutex_lock(&data->death_mutex);
 	data->stop_flag = 1;
 	pthread_mutex_unlock(&data->death_mutex);

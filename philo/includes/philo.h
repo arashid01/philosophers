@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:22:01 by amal              #+#    #+#             */
-/*   Updated: 2025/07/06 02:06:03 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/06 04:07:28 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,9 @@ void	destroy_forks_mutexes(t_data *data, int num_forks);
 long    current_time(long start_time);
 int		create_philos_threads(t_data *data);
 void    join_philos_threads(t_data *data);
+void    *philo_routine(void *arg);
+void	print_state(t_philo *philo, const char *str);
+void    ft_sleep(t_philo *philo, int time);
+int		check_stop_flag(t_philo *philo);
 
 #endif
