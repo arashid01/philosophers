@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:45:19 by amal              #+#    #+#             */
-/*   Updated: 2025/07/15 19:25:09 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/17 03:03:21 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,20 @@ static t_args	*create_args(int argc, char **argv)
 
 static void	run_simulation(t_data *data)
 {
-	create_philos_threads(data);
-	pthread_create(&data->monitor, NULL, monitor_routine, data);
+	if (!create_philos_threads(data))
+	{
+		ft_putendl_fd("Error: Failed to create philosopher threads", 2);
+		return;
+	}
+	if (pthread_create(&data->monitor, NULL, monitor_routine, data) != 0)
+	{
+		ft_putendl_fd("Error: Failed to create monitor thread", 2);
+		join_philos_threads(data);
+		return;
+	}
 	join_philos_threads(data);
-	pthread_join(data->monitor, NULL);
+	if (pthread_join(data->monitor, NULL) != 0)
+		ft_putendl_fd("Error: Failed to join monitor thread", 2);
 }
 
 int	main(int argc, char **argv)
