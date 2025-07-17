@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:01:26 by amal              #+#    #+#             */
-/*   Updated: 2025/07/15 20:17:32 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/17 03:46:51 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	destroy_shared_mutexes(t_data *data)
 	pthread_mutex_destroy(&data->death_mutex);
 	pthread_mutex_destroy(&data->meals_mutex);
 	pthread_mutex_destroy(&data->print_mutex);
+	pthread_mutex_destroy(&data->ready_mutex);
 }
 
 void	destroy_data(t_data *data)

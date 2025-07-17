@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:45:41 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/17 03:01:13 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/17 03:34:28 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	create_philos_threads(t_data *data)
 		}
 		i++;
 	}
+	data->ready_flag = 1;
 	return (1);
 }
 

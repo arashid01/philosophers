@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 21:22:01 by amal              #+#    #+#             */
-/*   Updated: 2025/07/15 20:17:16 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/17 03:50:17 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_args
 typedef struct s_data
 {
 	int				stop_flag;
+	int				ready_flag;
 	int				meals_eaten;
 	long			start_time;
 	t_args			args;
@@ -43,6 +44,7 @@ typedef struct s_data
 	pthread_mutex_t	death_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	meals_mutex;
+	pthread_mutex_t ready_mutex;
 }	t_data;
 
 typedef struct s_philo
@@ -85,5 +87,6 @@ int		allocate_forks(t_data *data, t_args *args);
 void	cleanup_on_mutexes_fail(t_data *data, t_args *args);
 void	cleanup_on_philos_fail(t_data *data, t_args *args);
 void	cleanup_on_forks_fail(t_data *data);
+void	wait_for_all_threads(t_data *data);
 
 #endif

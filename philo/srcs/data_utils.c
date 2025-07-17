@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 19:48:01 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/15 19:52:04 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/17 03:48:33 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_data	*allocate_data_struct(t_args *args)
 		return (NULL);
 	data->start_time = init_timer();
 	data->stop_flag = 0;
+	data->ready_flag = 0;
+	data->meals_eaten = 0;
 	data->args = *args;
 	return (data);
 }

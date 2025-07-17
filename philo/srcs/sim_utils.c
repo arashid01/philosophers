@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 03:14:18 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/15 19:21:23 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/17 03:49:24 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,16 @@ void	ft_sleep(t_philo *philo, int time)
 			return ;
 		usleep(100);
 	}
+}
+
+void	wait_for_all_threads(t_data *data)
+{
+	pthread_mutex_lock(&data->ready_mutex);
+	while(!data->ready_flag)
+	{
+		pthread_mutex_unlock(&data->ready_mutex);
+		usleep(100);
+		pthread_mutex_lock(&data->ready_mutex);
+	}
+	pthread_mutex_unlock(&data->ready_mutex);
 }

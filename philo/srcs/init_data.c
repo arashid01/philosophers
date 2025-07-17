@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 14:25:28 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/15 20:18:10 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/17 03:46:13 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,13 @@ int	init_shared_mutexes(t_data *data)
 	{
 		pthread_mutex_destroy(&data->death_mutex);
 		pthread_mutex_destroy(&data->meals_mutex);
+		return (0);
+	}
+	if (pthread_mutex_init(&data->ready_mutex, NULL) != 0)
+	{
+		pthread_mutex_destroy(&data->death_mutex);
+		pthread_mutex_destroy(&data->meals_mutex);
+		pthread_mutex_destroy(&data->print_mutex);
 		return (0);
 	}
 	return (1);

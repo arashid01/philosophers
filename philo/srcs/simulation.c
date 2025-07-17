@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:12:32 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/17 03:30:06 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/17 03:40:22 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,13 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	wait_for_all_threads(philo->data);
 	if (philo->data->args.num_of_philos == 1)
 	{
 		handle_one_philo(philo);
 		return (NULL);
 	}
-	if (philo->id % 2 != 0)
+	if (philo->id % 2 == 0)
 		usleep(100);
 	while (1)
 	{
