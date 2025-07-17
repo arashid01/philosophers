@@ -6,7 +6,7 @@
 /*   By: amrashid <amrashid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:12:32 by amrashid          #+#    #+#             */
-/*   Updated: 2025/07/15 20:19:24 by amrashid         ###   ########.fr       */
+/*   Updated: 2025/07/17 03:30:06 by amrashid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ void	check_meal_count(t_philo *philo)
 
 void	handle_one_philo(t_philo *philo)
 {
+	pthread_mutex_lock(philo->left_fork);
 	print_status(philo, "has taken a fork");
+	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_lock(&philo->data->death_mutex);
 	philo->data->stop_flag = 1;
 	pthread_mutex_unlock(&philo->data->death_mutex);
